@@ -10,10 +10,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.documentElement.classList.add('js'); // mark JS-enabled
+    document.documentElement.classList.add('js');
   setTimeout(() => {
-    document.documentElement.classList.add('ss-show'); // trigger transitions
-    }, 50); // small delay ensures CSS applies first
+    document.documentElement.classList.add('ss-show');
+    }, 50);
   });
 
 
@@ -219,25 +219,25 @@
  </div>
  <!-- end section-header -->
 <p class="attention-getter">
-  This portfolio is an AWS S3-hosted, static site, framed after the 'Cloud Resume Challenge'. This is created entirely on AWS using their services, which will be briefly broken down below:
+  This portfolio is an S3 static site hosted on AWS framed after the 'Cloud Resume Challenge'. This is created entirely on AWS using their services, which will be briefly broken down below:
   <ul class="attention-getter">
     <li>
-      <em>DNS:</em> Created through AWS Route 53
+      <em>DNS:</em> Provisioned through AWS Route 53
     </li>
     <li>
-      <em>HTTPS:</em> Provisioned through AWS Certificate Manager paired with AWS CloudFront.
+      <em>HTTPS:</em> Provisioned through AWS Certificate Manager paired with AWS CloudFront with Origin Access Control for private S3 bucket access.
     </li>
     <li>
-      <em>The Site:</em> Hosted on a Static S3 Website built entirely using HTML, CSS, and JavaScript. 
+      <em>The Site:</em> Hosted on a Static S3 Bucket built entirely using HTML, CSS, and JavaScript. 
     </li>
     <li>
-      <em>Visitor Counter:</em> Created using a combination of AWS API Gateway, AWS Lambda, and JavaScript, with data storage being held in AWS DynamoDB.
+      <em>Visitor Counter:</em> Created using a combination of AWS API Gateway, AWS Lambda, and JavaScript, with the long-term data storage being held in AWS DynamoDB.
     </li>
     <li>
       <em>Lambda Function:</em> Built using Python. View that code 'here'.
     </li>
     <li>
-      <em>Infrastructure as Code:</em> All API resources are defined in an AWS SAM Template and deployed using the SAM CLI.
+      <em>Infrastructure as Code:</em> All backend resources are defined in an AWS SAM Template and deployed using Github Actions and the SAM CLI.
     </li>
     <li>
       <em>CI/CD and Source Control:</em> Github Actions is used to automatically update, test, and deploy our site whenever new code is pushed to either the frontend or backend repository.
@@ -294,7 +294,7 @@
  </a>
  </li>
  <li>
- <a href="" target="_blank">
+ <a href="#0">
  BM- Vocal Performance
  <span>University of North Florida — 2025</span>
  </a>
