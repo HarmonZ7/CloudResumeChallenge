@@ -30,6 +30,9 @@ jobs:
       - name: Check AWS Credentials
         run: aws sts get-caller-identity
 
+      - name: Clear cloudfront cache
+        run: aws cloudfront create-invalidation --distribution-id EP4L308G73BTN --paths "/*"
+
       - name: Sync files to S3
         run: |
           aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
