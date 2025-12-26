@@ -32,9 +32,6 @@ jobs:
           pip install --upgrade pip
           pip install aws
 
-      - name: Check AWS Credentials
-        run: aws sts get-caller-identity
-
       - name: Sync files to S3
         run: |
           aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
