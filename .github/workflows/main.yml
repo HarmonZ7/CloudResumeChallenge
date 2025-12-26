@@ -1,0 +1,35 @@
+name: Frontend S3 Bucket Sync
+
+on:
+  push:
+    branches:
+      - main  # deploy test automatically
+  workflow_dispatch:  # allows manual triggers for prod
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-test:
+    name: Deploy to Test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # only for main branch
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ARN_TEST }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          audience: sts.amazonaws.com
+
+      - name: Check AWS Credentials
+        run: aws sts get-caller-identity
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
