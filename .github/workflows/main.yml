@@ -33,9 +33,9 @@ jobs:
       - name: Deploy frontend and clear CloudFront Cache
         run: |
           if [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
-            aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET_DEV }} --delete
+            aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET_DEV }} --delete
             aws cloudfront create-invalidation --distribution-id E3DZH8GONCYVQK --paths "/*"
           else
-            aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
+            aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} --delete
             aws cloudfront create-invalidation --distribution-id E2KBLTVV893N9E --paths "/*"
           fi
