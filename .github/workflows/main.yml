@@ -3,8 +3,8 @@ name: Frontend S3 Bucket Sync
 on:
   push:
     branches:
-      - main  # deploy test automatically
-      - dev
+      - dev  
+      - main
   workflow_dispatch:  # allows manual triggers for prod
 
 permissions:
